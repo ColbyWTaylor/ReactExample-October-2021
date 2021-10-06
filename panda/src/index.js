@@ -4,21 +4,24 @@ import './index.css';
 // import App from './App';
 // import Panda from './Panda';
 
-function Ninjas({name}) {
-  return <p>{name}</p>
-}
+const ninjaList = [
+  "Raphael",
+  "Donatello",
+  "Leonardo",
+  "Mikey"
+]
 
-function App() {
+function App({ninjas}) {
   return (
     <>
-    <Ninjas name="Leonardo"/>
-    <Ninjas name="Raphael"/>
-    <Ninjas name="Michaelangelo"/>
+    {ninjas.map(ninja => (
+      <li>{ninja}</li>
+    ))}
     </>
   )
 }
 
 ReactDOM.render(
-  <App />,
+  <App ninjas={ninjaList} />,
   document.getElementById('root')
 );
