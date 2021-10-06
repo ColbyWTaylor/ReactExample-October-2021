@@ -7,11 +7,17 @@ import './index.css';
 function App() {
   const [val,setVal] = useState("don't stop coding")
   const [val2,setVal2] = useState("grab a snickers")
-  console.log(val)
+
+  useEffect(()=> {
+    console.log("value 1: " + val)
+  }, [val])
+  useEffect(()=> {
+    console.log("value 2: " + val2)
+  },[val2])
   return (
     <>
     <p>first thing: <input value={val} onChange={(e)=> setVal(e.target.value)}/></p>
-    <p>second thing: <input /></p>
+    <p>second thing: <input onChange={(e) => setVal2(e.target.value)} /></p>
     </>
   )
 }
