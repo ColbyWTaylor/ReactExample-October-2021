@@ -24,3 +24,4 @@ $ pip3 install flask && python3 server.py
   ...
 </head>
 ```
+This project has been updated with an installation of create-react-app 
