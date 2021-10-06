@@ -4,22 +4,21 @@ import './index.css';
 // import App from './App';
 // import Panda from './Panda';
 
-function App() {
-  const [val,setVal] = useState("don't stop coding")
-  const [val2,setVal2] = useState("grab a snickers")
+function GitHubUser() {
+  const [data,setData] = useState(null);
+  useEffect(()=> {
+    fetch(`https://api.github.com/users/{login}`)
+    .then(res => res.json())
+    .then(setData)
+    .catch(console.error)
+  })
 
-  useEffect(()=> {
-    console.log("value 1: " + val)
-  }, [val])
-  useEffect(()=> {
-    console.log("value 2: " + val2)
-  },[val2])
-  return (
-    <>
-    <p>first thing: <input value={val} onChange={(e)=> setVal(e.target.value)}/></p>
-    <p>second thing: <input onChange={(e) => setVal2(e.target.value)} /></p>
-    </>
-  )
+  if (data) return <p>{JSON.stringify(data)}</p>
+  return null 
+}
+
+function App() {
+return <GitHubUser login="colbywtaylor"/>
 }
 
 ReactDOM.render(
