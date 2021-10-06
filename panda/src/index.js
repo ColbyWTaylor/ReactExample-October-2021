@@ -5,17 +5,17 @@ import './index.css';
 // import Panda from './Panda';
 
 const ninjaList = [
-  "Raphael",
-  "Donatello",
-  "Leonardo",
-  "Mikey"
+  {id: 1, name: "Raphael"},
+  {id: 1, name: "Leonardo"},
+  {id: 1, name: "Donatello"},
+  {id: 1, name: "Mikey"}
 ]
 
 function App({ninjas}) {
   return (
     <>
     {ninjas.map(ninja => (
-      <li>{ninja}</li>
+      <li key={ninja.id}>{ninja.name}</li>
     ))}
     </>
   )
