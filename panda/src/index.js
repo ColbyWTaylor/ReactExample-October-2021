@@ -3,22 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 // import Panda from './Panda';
+// List of available APIs: https://github.com/public-apis/public-apis
+function StarWarsCharacter({}) {
+  const [data, setData] = useState(null)
+  useEffect(() => {
+    fetch('https://api.coinbase.com/v2/currencies')
+  .then(response => response.json())
+  .then(setData)
+  .then(json => console.log(json)).catch(console.error)
+  },[])
 
-function GitHubUser() {
-  const [data,setData] = useState(null);
-  useEffect(()=> {
-    fetch(`https://api.github.com/users/{login}`)
-    .then(res => res.json())
-    .then(setData)
-    .catch(console.error)
-  })
-
-  if (data) return <p>{JSON.stringify(data)}</p>
-  return null 
+  return data ? <h1>data acquired</h1> : "not acquired"
 }
 
 function App() {
-return <GitHubUser login="colbywtaylor"/>
+  return <StarWarsCharacter  />
 }
 
 ReactDOM.render(
